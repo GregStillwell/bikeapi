@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500&display=swap" rel="stylesheet">
   <title>Bikes</title>
 </head>
+
 <body>
-  
+
+  <h1>Stolen Bike Index</h1>
+  <p>Generate an index of the bikes that were stolen in your zip code in the past week.</p>
+  </br>
+  <form id="form">
+    <label for="location">Enter Your Zip Code</label>
+    <input id="location" type="text">
+    <button type="submit" id="submit">Submit</button>
+  </form>
+
+  <p id="results"></p>
+  <p class="hidden" id="errorContainer"><p>
 </body>
+
 </html>

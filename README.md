@@ -2,7 +2,7 @@
 
 #### By 
 
-#### _ Insert breif description_
+#### _ Insert breif description _
 
 ## Technologies Used
 * HTML
@@ -32,6 +32,6 @@ _More detailed description_
 
 ## License
 
-_{If you run into any issues or have questions, ideas or concerns, please email me at mod.jordan@icloud.com.}_
+_{If you run into any issues or have questions, ideas or concerns, please email us at *insert email here*}_
 
-**License:** Apache License 2.0; July 16th, 2023
+**License:** Apache License 2.0; August 6th, 2023
