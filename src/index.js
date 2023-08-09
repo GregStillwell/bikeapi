@@ -1,54 +1,69 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Bike from './bike.js';
+import BikeService from './bike.js';
 
-//Business Logic
+//Business 
 
-
-async function getBike(zipCode) {
-  const response = await Bike.getBike(zipCode)
-    // .then(function (response) {
-    //   console.log(response);
+function getBikes(zipCode) {
+  BikeService.getBikes(zipCode)
+    .then(function (response) {
       if (response.bikes) {
-        printElements(response, zipCode);
+        //printElements(response, zipCode);
+        printStolenBikes(response);
+        //printFoundBikes(response);
       } else {
         printError(response, zipCode);
       }
-//     });
-}
-// UI js goes here
-
-function printError(request, response) {
-  document.querySelector('#errorContainer').innerText = `There was an error accessing the bike location data for ${getBike}: ${request.status} ${request.statusText}: ${response.message}`;
+    });
 }
 
-//function printError(error, zipCode) {
-//document.querySelector('#errorContainer').innerText = `There was an error accessing the stolen bike data for ${zipCode}: ${error}.`;
+//UI
+
+// Here
+// VVVVVV
+// function printElements(apiResponse) {
+//   const container = document.querySelector('#gifContainer');
+//   apiResponse.data.forEach((response) => {
+//     container.innerHTML += `<img src="${response.bikes[0].url}">`;
+//   });
+// }
+
+//function printElements(response) {
+  //document.getElementById("results").innerText = `${response.bikes[0].status} ${response.bikes[0].url}`;
 //}
 
-function printElements(bikes) {
-  // const container = document.querySelector('#results');
-  bikes.forEach(bike => {
-    return console.log(bike.bikes)
-    // return container.innerHTML += `ID: ${bike.id}, URL: ${bike.url}<br>`;
+function printStolenBikes(response) {
+  const serial = document.querySelector("#serial");
+  const date = document.querySelector("#date");
+  const color = document.querySelector("#color");
+  const img = document.querySelector("#img");
+  let now = Date.now() / 1000;
+  const week = 604800;
+  response.bikes.forEach((bukket) => {
+    if (now - bukket.date_stolen > week) {
+      return "No image provided.";
+    } else {
+      //return bukket.large_img;
+      serial.innerHTML += `${bukket.serial}`;
+      date.innerText += `${bukket.date_stolen}`;
+      color.innerText += `${bukket.frame_colors}`;
+      img.innerHTML += `<img src="${bukket.large_img}">`;
+    }
+
   });
 }
 
-//function printElements(response) {
-//const container = document.getElementById("results");
-//   const arr = Array.from(response);
-//   arr.forEach((element) => {
-//container.innerHTML += `${response[0]}`;
-//}
-
-// }
+function printError(error) {
+  document.getElementById("results").innerText = `There was an error accessing the bike data: ${error}.`;
+}
 
 function handleForm(event) {
   event.preventDefault();
-  const zipCode = parseInt(document.querySelector('#location').value);
-  document.querySelector('#location').value = null;
-  getBike(zipCode);
+  const zipCode = document.getElementById("zip").value;
+  document.getElementById("zip").value = null;
+  getBikes(zipCode);
+  //printBike(response);
 }
 
 window.addEventListener("load", function () {

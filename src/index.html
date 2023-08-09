@@ -2,25 +2,24 @@
 <html lang="en-US">
 
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500&display=swap" rel="stylesheet">
-  <title>Bikes</title>
+  <title>Project Title</title>
 </head>
 
 <body>
-
-  <h1>Stolen Bike Index</h1>
-  <p>Generate an index of the bikes that were stolen in your zip code in the past week.</p>
-  </br>
-  <form id="form">
-    <label for="location">Enter Your Zip Code</label>
-    <input id="location" type="text">
-    <button type="submit" id="submit">Submit</button>
+  <h1>Stolen Bike Finder</h1>
+  <div class="input">
+  <form>
+    <label>Enter a zip code:</label>
+    <input id="zip" type="text">
+    <button type="submit" id="fetch">Submit</button>
   </form>
-
-  <p id="results"></p>
-  <p class="hidden" id="errorContainer"><p>
+</div>
+  </br>
+  <p id="serial"> </p>
+  <p id="date"> </p>
+  <p id="color"> </p>
+  <p id="img"> </p>
+  <p id="found"> </p>
 </body>
 
 </html>
